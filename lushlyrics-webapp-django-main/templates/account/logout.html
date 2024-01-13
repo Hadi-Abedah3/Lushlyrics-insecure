@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128" type="image/x-icon">
+    <meta name="description" itemprop="description" content="Play your playlists and favourites tracks, albums, and artists">
+    <meta name="keywords" content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services">
+    <link rel="stylesheet" href="{% static 'formStyle.css' %}">
+    <title>Youttify Sign Out</title>
+</head>
+
+<body>
+    <div class="signout_header">
+        <!-- Optional header content -->
+    </div>
+
+    <div class="signout_body">
+        <div class="logout_form">
+            <h2 class="center-align">Are you sure you want to sign out?</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <button class="btn btn_log_out" type="submit">Sign out</button>
+                <div class="divider"></div>
+                <p class="label center-align">Changed your mind? <a href="/">Go back</a>.</p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

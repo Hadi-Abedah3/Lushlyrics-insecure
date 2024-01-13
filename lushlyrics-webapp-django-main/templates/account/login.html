@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128" type="image/x-icon">
+    <meta name="description" itemprop="description" content="Play your playlists and favourites tracks, albums, and artists">
+    <meta name="keywords" content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services">
+    <link rel="stylesheet" href="{% static 'formStyle.css' %}">
+    <title>Youttify - Sign In</title>
+</head>
+
+<body>
+    <div class="signin_header">
+        <!-- Header Content (if any) -->
+    </div>
+
+    <div class="signin_body">
+        <form class="login_form" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <h2 class='center-align'>Sign In</h2>
+
+            <!-- Display form errors (if any) -->
+            {% if form.non_field_errors %}
+                <div class="error-messages">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Username or Email Field -->
+            <label for="login-username" class="label">Username or Email</label>
+            <input type="text" class="form_input" name="login" placeholder="Enter your username or email." required>
+            {% if form.login.errors %}
+                <span style="color:#f79862;">{{ form.login.errors }}</span>
+            {% endif %}
+
+            <!-- Password Field -->
+            <label for="login-password" class="label">Password</label>
+            <input type="password" class="form_input" name="password" placeholder="Enter your password." required>
+            {% if form.password.errors %}
+                <span style="color:#f79862;">{{ form.password.errors }}</span>
+            {% endif %}
+
+            <button class='btn btn_log_in' type="submit">Sign In</button>
+            <div class="divider"></div>
+            <p class='center-align'>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a>.</p>
+        </form>
+    </div>
+</body>
+
+</html>
